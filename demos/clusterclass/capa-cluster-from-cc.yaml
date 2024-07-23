@@ -1,0 +1,30 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cni: example-aws-crs-0
+  name: example-cc-aws
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: quick-start
+    controlPlane:
+      replicas: 1
+    variables:
+    - name: region
+      value: eu-west-2
+    - name: sshKeyName
+      value: csalas-keypair
+    - name: controlPlaneMachineType
+      value: t2.medium
+    - name: workerMachineType
+      value: t2.medium
+    version: v1.27.0
+    workers:
+      machineDeployments:
+      - class: default-worker
+        name: md-0
+        replicas: 1
