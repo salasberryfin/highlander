@@ -1,0 +1,10 @@
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: ClusterctlConfig
+metadata:
+  name: clusterctl-config
+  namespace: rancher-turtles-system
+spec:
+  providers:
+  - name: aws
+    url: https://github.com/kubernetes-sigs/cluster-api/releases/v1.7.3/core-components.yaml
+    type: InfrastructureProvider
